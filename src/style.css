@@ -48,7 +48,6 @@ section {
 section .container {
   display: grid;
   justify-content: center;
-  align-items: center;
   grid-auto-flow: column;
   grid-template-columns: 1fr 1fr;
 }
@@ -83,6 +82,10 @@ section .leader-board .board ul li.special {
 
 section .add-score {
   text-align: center;
+}
+
+section .add-score h2 {
+  padding: 10px;
 }
 
 section .add-score form {

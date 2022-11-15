@@ -54,15 +54,19 @@ section .container {
 }
 
 section .container .leader-board {
-  border: 2px solid black;
   height: 50vh;
-  overflow: auto;
 }
 
 section .leader-board .refresh {
   text-align: center;
   padding: 10px;
   font-size: 20px;
+}
+
+section .leader-board .board {
+  border: 2px solid black;
+  overflow: auto;
+  height: 100%;
 }
 
 section .leader-board .board ul {
@@ -83,7 +87,7 @@ section .add-score {
 
 section .add-score form {
   display: grid;
-  justify-items: center;
+  justify-items: right;
   gap: 20px;
 }
 

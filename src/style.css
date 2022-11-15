@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+/* Small */
+@media (min-width: 767px) {
+  .container {
+    width: 750px;
+  }
+}
+
+/* Medium */
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+/* Large */
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+header {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+section {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+section .container {
+  display: grid;
+  justify-content: center;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 1fr;
+}
+
+section .container .leader-board {
+  height: 50vh;
+}
+
+section .leader-board .refresh {
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+}
+
+section .leader-board .board {
+  border: 2px solid black;
+  overflow: auto;
+  height: 100%;
+}
+
+section .leader-board .board ul {
+  list-style-type: none;
+}
+
+section .leader-board .board ul li {
+  font-size: 20px;
+}
+
+section .leader-board .board ul li.special {
+  background-color: #eee;
+}
+
+section .add-score {
+  text-align: center;
+}
+
+section .add-score h2 {
+  padding: 10px;
+}
+
+section .add-score form {
+  display: grid;
+  justify-items: right;
+  gap: 20px;
+}
+
+section .add-score form input {
+  width: 80%;
+  font-size: 20px;
+  padding: 5px;
+}
+
+section .add-score form button {
+  font-size: 20px;
+  padding: 5px 10px;
+}

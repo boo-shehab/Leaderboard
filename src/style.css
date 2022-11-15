@@ -1,8 +1,9 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 .container {
   padding-left: 15px;
   padding-right: 15px;
@@ -10,6 +11,7 @@
   margin-right: auto;
   width: 100%;
 }
+
 /* Small */
 @media (min-width: 767px) {
   .container {
@@ -30,73 +32,68 @@
     width: 1170px;
   }
 }
-header{
+
+header {
   margin-top: 15px;
   margin-bottom: 15px;
 }
-header h1 {
 
-}
-
-section{
+section {
   position: absolute;
   width: 100%;
   top: 50%;
   transform: translateY(-50%);
 }
-section .container{
+
+section .container {
   display: grid;
   justify-content: center;
   align-items: center;
   grid-auto-flow: column;
   grid-template-columns: 1fr 1fr;
 }
-section .container .leader-board{
+
+section .container .leader-board {
   border: 2px solid black;
   height: 50vh;
   overflow: auto;
 }
-section .leader-board .refresh{
+
+section .leader-board .refresh {
   text-align: center;
   padding: 10px;
   font-size: 20px;
 }
-section .leader-board .refresh span{
-  
-}
-section .leader-board .refresh button{
-  
-}
-section .leader-boardv .board {
-}
-section .leader-board .board ul{
+
+section .leader-board .board ul {
   list-style-type: none;
 }
-section .leader-board .board ul li{
+
+section .leader-board .board ul li {
   font-size: 20px;
-
 }
-section .leader-board .board ul li.special{
+
+section .leader-board .board ul li.special {
   background-color: #eee;
-
 }
-section .add-score{
+
+section .add-score {
   text-align: center;
 }
-section .add-score h2{
-  
-}
-section .add-score form{
+
+section .add-score form {
   display: grid;
   justify-items: center;
   gap: 20px;
 }
-section .add-score form input{
+
+section .add-score form input {
   width: 80%;
   font-size: 20px;
   padding: 5px;
 }
-section .add-score form button{
+
+section .add-score form button {
   font-size: 20px;
   padding: 5px 10px;
 }

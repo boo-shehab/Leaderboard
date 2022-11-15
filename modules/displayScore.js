@@ -1,24 +1,24 @@
-import {addLocalStorage, getLocalStorage} from './localStorage.js';
+import { getLocalStorage } from './localStorage.js';
 
-let boardUser = document.querySelector('section .leader-board .board ul');
+const boardUser = document.querySelector('section .leader-board .board ul');
 
-function displayScore(user, special){
+function displayScore(user, special) {
   const li = document.createElement('li');
-  if(special) li.classList.add('special');
+  if (special) li.classList.add('special');
   li.innerHTML = `${user.name} : ${user.score}`;
   boardUser.appendChild(li);
 }
 
-function display(){
-  boardUser.innerHTML ='';
+function display() {
+  boardUser.innerHTML = '';
   let special = false;
   const users = getLocalStorage();
   if (users.length > 0) {
     users.forEach((user) => {
       special = !special;
-      displayScore(user,special);
+      displayScore(user, special);
     });
   }
 }
 
-export {displayScore, display};
+export { displayScore, display };

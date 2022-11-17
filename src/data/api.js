@@ -1,6 +1,6 @@
 const ID = 'I0ugL4x2K9pTkncbrX8V';
 
-async function add(newScore) {
+const add = async (newScore) => {
   await fetch(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${ID}/scores/`, {
     method: 'POST',
     headers: {
@@ -9,8 +9,6 @@ async function add(newScore) {
     body: JSON.stringify(newScore),
   })
     .then((ele) => ele.json());
-}
-async function get() {
-  return fetch(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${ID}/scores/`);
-}
+};
+const get = async () => fetch(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${ID}/scores/`);
 export { add, get };

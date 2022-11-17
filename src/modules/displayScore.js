@@ -4,7 +4,8 @@ export default class Displaying {
   static special = false;
 
   // eslint-disable-next-line class-methods-use-this
-  displayScore(user) {
+  displayScore = (user) => {
+    Displaying.special = !Displaying.special;
     const li = document.createElement('li');
     if (Displaying.special) li.classList.add('special');
     li.innerHTML = `${user.user} : ${user.score}`;
@@ -12,11 +13,10 @@ export default class Displaying {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  display(users) {
+  display = (users) => {
     boardUser.innerHTML = '';
     if (users.length > 0) {
       users.forEach((user) => {
-        Displaying.special = !Displaying.special;
         this.displayScore(user);
       });
     }

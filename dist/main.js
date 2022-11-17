@@ -9,36 +9,6 @@
  */
 (self["webpackChunkleaderboard"] = self["webpackChunkleaderboard"] || []).push([["main"],{
 
-/***/ "./modules/addScore.js":
-/*!*****************************!*\
-  !*** ./modules/addScore.js ***!
-  \*****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _localStorage_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./localStorage.js */ \"./modules/localStorage.js\");\n/* harmony import */ var _displayScore_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./displayScore.js */ \"./modules/displayScore.js\");\n\n\n\nconst name = document.querySelector('section .add-score form input#name');\nconst score = document.querySelector('section .add-score form input#score');\n\nfunction addNewScore() {\n  (0,_localStorage_js__WEBPACK_IMPORTED_MODULE_0__.addLocalStorage)(name.value, score.value);\n  (0,_displayScore_js__WEBPACK_IMPORTED_MODULE_1__.display)();\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (addNewScore);\n\n//# sourceURL=webpack://leaderboard/./modules/addScore.js?");
-
-/***/ }),
-
-/***/ "./modules/displayScore.js":
-/*!*********************************!*\
-  !*** ./modules/displayScore.js ***!
-  \*********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"display\": () => (/* binding */ display),\n/* harmony export */   \"displayScore\": () => (/* binding */ displayScore)\n/* harmony export */ });\n/* harmony import */ var _localStorage_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./localStorage.js */ \"./modules/localStorage.js\");\n\n\nconst boardUser = document.querySelector('section .leader-board .board ul');\n\nfunction displayScore(user, special) {\n  const li = document.createElement('li');\n  if (special) li.classList.add('special');\n  li.innerHTML = `${user.name} : ${user.score}`;\n  boardUser.appendChild(li);\n}\n\nfunction display() {\n  boardUser.innerHTML = '';\n  let special = false;\n  const users = (0,_localStorage_js__WEBPACK_IMPORTED_MODULE_0__.getLocalStorage)();\n  if (users.length > 0) {\n    users.forEach((user) => {\n      special = !special;\n      displayScore(user, special);\n    });\n  }\n}\n\n\n\n//# sourceURL=webpack://leaderboard/./modules/displayScore.js?");
-
-/***/ }),
-
-/***/ "./modules/localStorage.js":
-/*!*********************************!*\
-  !*** ./modules/localStorage.js ***!
-  \*********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"addLocalStorage\": () => (/* binding */ addLocalStorage),\n/* harmony export */   \"getLocalStorage\": () => (/* binding */ getLocalStorage)\n/* harmony export */ });\nfunction getLocalStorage() {\n  return localStorage.getItem('leader-board') ? JSON.parse(localStorage.getItem('leader-board')) : [];\n}\n\nfunction addLocalStorage(name, score) {\n  const newScore = getLocalStorage();\n  const id = newScore.length !== 0 ? newScore[newScore.length - 1].id + 1 : 1;\n  newScore.push({ id, name, score });\n  localStorage.setItem('leader-board', JSON.stringify(newScore));\n}\n\n\n\n//# sourceURL=webpack://leaderboard/./modules/localStorage.js?");
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/dist/cjs.js!./src/style.css":
 /*!*************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./src/style.css ***!
@@ -139,13 +109,43 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./src/data/api.js":
+/*!*************************!*\
+  !*** ./src/data/api.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"add\": () => (/* binding */ add),\n/* harmony export */   \"get\": () => (/* binding */ get)\n/* harmony export */ });\nconst ID = 'I0ugL4x2K9pTkncbrX8V';\n\nasync function add(newScore) {\n  await fetch(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${ID}/scores/`, {\n    method: 'POST',\n    headers: {\n      'Content-Type': 'application/json',\n    },\n    body: JSON.stringify(newScore),\n  })\n    .then((ele) => ele.json());\n}\nasync function get() {\n  return fetch(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${ID}/scores/`);\n}\n\n\n//# sourceURL=webpack://leaderboard/./src/data/api.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _modules_displayScore_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/displayScore.js */ \"./modules/displayScore.js\");\n/* harmony import */ var _modules_addScore_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../modules/addScore.js */ \"./modules/addScore.js\");\n\n\n\n\nconst submit = document.querySelector('section .add-score form button');\nsubmit.addEventListener('click', (e) => {\n  e.preventDefault();\n  (0,_modules_addScore_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])();\n});\n\n(0,_modules_displayScore_js__WEBPACK_IMPORTED_MODULE_1__.display)();\n\n//# sourceURL=webpack://leaderboard/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _modules_addScore_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/addScore.js */ \"./src/modules/addScore.js\");\n/* harmony import */ var _modules_displayScore_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/displayScore.js */ \"./src/modules/displayScore.js\");\n/* harmony import */ var _data_api_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./data/api.js */ \"./src/data/api.js\");\n\n\n\n\n\nconst submit = document.querySelector('section .add-score form button');\nconst refersh = document.querySelector('section .leader-board .refresh button');\nconst displaying = new _modules_displayScore_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"]();\n\nsubmit.addEventListener('click', (e) => {\n  e.preventDefault();\n  (0,_modules_addScore_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n});\n(0,_data_api_js__WEBPACK_IMPORTED_MODULE_3__.get)().then((list) => list.json()).then((list) => list.result).then((list) => {\n  displaying.display(list);\n});\nrefersh.addEventListener('click', () => {\n  (0,_data_api_js__WEBPACK_IMPORTED_MODULE_3__.get)().then((list) => list.json()).then((list) => list.result).then((list) => {\n    displaying.display(list);\n  });\n});\n\n//# sourceURL=webpack://leaderboard/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/modules/addScore.js":
+/*!*********************************!*\
+  !*** ./src/modules/addScore.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _displayScore_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./displayScore.js */ \"./src/modules/displayScore.js\");\n/* harmony import */ var _data_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../data/api.js */ \"./src/data/api.js\");\n// import { addLocalStorage } from './localStorage.js';\n\n\n\nconst user = document.querySelector('section .add-score form input#name');\nconst score = document.querySelector('section .add-score form input#score');\nconst displaying = new _displayScore_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\nfunction addNewScore() {\n  const obj = {\n    user: user.value,\n    score: score.value,\n  };\n  (0,_data_api_js__WEBPACK_IMPORTED_MODULE_1__.add)(obj);\n  displaying.displayScore(obj);\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (addNewScore);\n\n//# sourceURL=webpack://leaderboard/./src/modules/addScore.js?");
+
+/***/ }),
+
+/***/ "./src/modules/displayScore.js":
+/*!*************************************!*\
+  !*** ./src/modules/displayScore.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Displaying)\n/* harmony export */ });\nconst boardUser = document.querySelector('section .leader-board .board ul');\n\nclass Displaying {\n  static special = false;\n\n  // eslint-disable-next-line class-methods-use-this\n  displayScore(user) {\n    const li = document.createElement('li');\n    if (Displaying.special) li.classList.add('special');\n    li.innerHTML = `${user.user} : ${user.score}`;\n    boardUser.appendChild(li);\n  }\n\n  // eslint-disable-next-line class-methods-use-this\n  display(users) {\n    boardUser.innerHTML = '';\n    if (users.length > 0) {\n      users.forEach((user) => {\n        Displaying.special = !Displaying.special;\n        this.displayScore(user);\n      });\n    }\n  }\n}\n\n//# sourceURL=webpack://leaderboard/./src/modules/displayScore.js?");
 
 /***/ })
 

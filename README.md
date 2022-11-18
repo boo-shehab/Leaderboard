@@ -10,11 +10,13 @@
 ## Getting Started
 This is an example of how you may give instructions on setting up your project locally. Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.
 
-## Live Demo 
+## 🚀 Live Demo 
 
-comeing soon...
+[Live Demo Link](https://boo-shehab.github.io/Leaderboard/dist/)
 
-To get a local copy up and running follow these simple example steps.
+## 💻 Getting Started
+
+To get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
@@ -24,14 +26,15 @@ To get a local copy up and running follow these simple example steps.
 
 ### Setup
 
-- Clone the repository
-
+- Clone the repo `git@github.com:boo-shehab/Leaderboard.git`
 - Open the project in your favourite text editor
+- Change to the corresponding branch `git checkout leaderboard`
 
 ### Install
 
-git clone https://github.com/boo-shehab/Leaderboard.git
-git install
+- Run `npm i` in your terminal.
+- Run `npm start` in your terminal.
+- Enjoy my app.
 
 
 ## 👤 Author1
@@ -47,7 +50,7 @@ Contributions, issues, and feature requests are welcome!
 
 Feel free to check the [issues page](../../issues/).
 
-## Show your support
+## ⭐️Show your support
 
 Give a ⭐️ if you like this project!
 
